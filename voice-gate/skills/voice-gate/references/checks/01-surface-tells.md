@@ -24,7 +24,10 @@ Proposes findings only. Renders no verdict. May propose zero findings.
    - **Rule-of-three smoothness** — three balanced items satisfying because symmetrical, not
      because true. The third item especially.
    - **Beautiful-but-anyone line** — correct, even nice, but no particular person had to write it.
-   - **Explanation after image** — the clause naming the feeling the image already gave.
+   - **Explanation after image** — the clause naming the feeling the image already gave. (This
+     same pattern is `05-line-craft` §Over-explanation at the line level. On dedupe, line-craft
+     owns the row — it outranks surface-tells. Propose it here only if line-craft did not catch
+     it; if both fire on one quote, let the line-craft row stand and fold your angle into it.)
    - **Overly clean final wisdom** — a closing sentence arriving as packaged truth rather than
      the thing itself.
    - **Stacked X-not-Y kicker** — repeated "not X, but Y" as a structural punchline.

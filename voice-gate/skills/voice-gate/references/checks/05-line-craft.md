@@ -17,7 +17,9 @@ Proposes findings only. Renders no verdict. May propose zero findings.
 1. **Line aliveness.** Does each load-bearing line have a particular pressure, or is it inert and
    replaceable? Flag lines that are correct but dead.
 2. **Over-explanation.** A clause that re-states what the previous clause or image already
-   delivered. The most common fix is a cut, not an addition.
+   delivered. The most common fix is a cut, not an addition. This is the same pattern
+   `01-surface-tells` calls "explanation after image"; when both fire on one quote, line-craft
+   owns the row by dedupe precedence (line-craft outranks surface-tells), so claim it here.
 3. **Concreteness vs abstraction.** Where the piece reaches for a feeling-word or an abstraction
    ("connection", "presence", "the weight of it") instead of the concrete thing that would carry
    it. Flag the abstraction; suggest the concrete swap direction.

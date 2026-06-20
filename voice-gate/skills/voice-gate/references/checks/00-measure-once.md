@@ -11,7 +11,12 @@ This is a deterministic parse, not a judgment. It records what is there. The che
 ### 1. Form and length
 
 - Form (essay / newsletter / post / email), as confirmed at intake.
-- Word count; paragraph count; section count if the piece has sections.
+- Word count, paragraph count, and section count (if the piece has sections). Count
+  mechanically, not by estimate: words are whitespace-separated tokens; paragraphs are blocks
+  separated by a blank line; sections are explicit headers. Record exact integers, never a
+  rounded or `~` figure. Every downstream count claim (rule-of-three lists, rhythm runs, echo
+  tallies) inherits this one, so a loose count here propagates. If you cannot state it as an
+  exact integer, you have not measured it yet.
 
 ### 2. Section map
 
