@@ -1,6 +1,6 @@
 # Voice Gate — share / install note
 
-A standalone Claude plugin (`voice-gate`, v0.2.0) with two skills. It models one writer's
+A standalone Claude plugin (`voice-gate`, v0.3.0) with three skills. It models one writer's
 voice and checks finished medium-form nonfiction against it. Diagnose-only: it tells you what
 is off and points at the smallest fix. It never rewrites your prose.
 
@@ -14,8 +14,12 @@ is off and points at the smallest fix. It never rewrites your prose.
   layer (AI-polish tells, too-clean narrator, the compounding/propulsion lens, figurative
   landing, line craft, originality, and a preserve-over-polish governor) plus a personalized
   layer that calibrates against the supplied profile.
-- **`voice-gate-builder`** (the generator). Builds the supplied voice profile the runtime needs,
-  from a writer's own corpus, then proves it through a human-graded calibration gate.
+- **`voice-gate-builder`** (the corpus generator). Builds the supplied voice profile the runtime
+  needs, from a writer's own corpus, then proves it through a human-graded calibration gate.
+- **`voice-gate-interview`** (the consent-first generator). Builds the same profile by a guided,
+  visual interview when the writer has no corpus or does not want to share one. Optional pasted or
+  uploaded samples are quote-grounded against the answers; the same human-graded calibration gate
+  proves it.
 
 ## How to use `voice-gate-builder`
 
@@ -28,6 +32,18 @@ is off and points at the smallest fix. It never rewrites your prose.
    un-scened test passage. **You grade it.** The builder does not grade its own output.
 5. On a pass, you have a profile the runtime can gate against. On a thin corpus it fails cleanly
    and tells you what is missing rather than inventing a profile.
+
+## How to use `voice-gate-interview`
+
+1. No corpus needed. Run it: **"build my voice profile by interview."**
+2. It walks you through the six contract slots as a visual interview (in chat on Cowork / desktop,
+   or as an offline HTML file in a terminal), filling the profile in live as you answer.
+3. Optionally paste or upload a little of your own writing. Samples outrank your answers: if the
+   prose contradicts a claim, the prose wins, and that slot becomes sample-grounded.
+4. It hands you the **same calibration gate** the builder does (quiz + test passage). **You grade
+   it**, and it grades the self-reported answers first. The skill does not grade its own output.
+5. Use the builder instead when you do have a corpus you are happy to share — quotes ground a
+   profile harder than self-report.
 
 ## How to use `voice-gate`
 

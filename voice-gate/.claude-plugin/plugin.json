@@ -1,8 +1,8 @@
 {
   "name": "voice-gate",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Max Sheahan"
   },
-  "description": "A single-voice writing instrument in two skills. voice-gate checks a finished medium-form nonfiction piece against a supplied voice profile and universal craft, rendering one locked scorecard and one verdict; diagnose-only, it never edits. voice-gate-builder generates that supplied profile from a writer's own corpus and proves it through a human-graded calibration gate it never self-grades. Build with evidence, stop for the operator, fail cleanly on a thin corpus."
+  "description": "A single-voice writing instrument in three skills. voice-gate checks a finished nonfiction piece against a supplied voice profile and renders one locked scorecard and one verdict; diagnose-only, it never edits. voice-gate-builder generates that profile from a writer's corpus; voice-gate-interview builds the same profile by a consent-first interview when no corpus exists, grounding any pasted samples. Both prove it through a human-graded calibration gate they never self-grade."
 }

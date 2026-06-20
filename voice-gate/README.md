@@ -50,11 +50,20 @@ on synthetic text.
   matching the runtime's profile contract, and proves it through a human-graded calibration gate
   (a scenario quiz and a test passage) that it never self-grades. Reuses the existing extraction
   method rather than reinventing it; fails cleanly on a thin corpus.
+- **Phase 4.6: `voice-gate-interview`, the consent-first kickoff.** Built and shipped.
+  (`skills/voice-gate-interview/`) Builds the same six-slot profile by a guided, visual interview
+  for a writer who has no corpus or does not want to share one. Any samples the writer pastes or
+  uploads are quote-grounded against their answers (the sample wins on a contradiction); ungrounded
+  answers are marked self-reported and the calibration gate tests them first. Renders as an in-chat
+  visualization on Cowork, chat, and desktop, or writes an interactive offline HTML file in a
+  terminal. Same calibration gate, never self-graded.
 - **Later: `voice-reviser`.** Constrained, flag-bounded revision in voice, governed by
   preserve-over-polish, handed off from the gate. The gate never edits; the reviser does, within
   the gate's approved flags. Not built yet.
 
-The gate is the distributable entry point; the builder makes it generatable for any writer from
-their own corpus. To build a profile: "build my voice profile for the gate" (see
-`skills/voice-gate-builder/SKILL.md`). To gate a piece against it: "run the voice gate on this
-draft" (see `skills/voice-gate/SKILL.md`).
+The gate is the distributable entry point; the builder generates its profile from a writer's own
+corpus, and the interview generates the same profile when there is no corpus to give. To build a
+profile from a corpus: "build my voice profile for the gate" (see `skills/voice-gate-builder/`). To
+build one by interview instead: "build my voice profile by interview" (see
+`skills/voice-gate-interview/`). To gate a piece against it: "run the voice gate on this draft" (see
+`skills/voice-gate/SKILL.md`).
