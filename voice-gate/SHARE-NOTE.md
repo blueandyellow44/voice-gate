@@ -1,8 +1,8 @@
 # Voice Gate — share / install note
 
-A standalone Claude plugin (`voice-gate`, v0.3.0) with three skills. It models one writer's
-voice and checks finished medium-form nonfiction against it. Diagnose-only: it tells you what
-is off and points at the smallest fix. It never rewrites your prose.
+A standalone Claude plugin (`voice-gate`, v0.4.0) with three skills and one agent per skill. It
+models one writer's voice and checks finished medium-form nonfiction against it. Diagnose-only:
+it tells you what is off and points at the smallest fix. It never rewrites your prose.
 
 ## What this plugin does
 

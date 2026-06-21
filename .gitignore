@@ -7,3 +7,6 @@ __pycache__/
 
 # Build artifacts (regenerable via automation/package_voice_gate.py)
 /dist/
+
+# Session scaffolding (local pickup notes, not part of the plugin)
+/PICKUP.md

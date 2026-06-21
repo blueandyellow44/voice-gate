@@ -154,6 +154,33 @@ def preflight():
             else:
                 ok(f"skill {s}: description has no angle-bracket placeholders")
 
+    # 2b. agents present (optional) + frontmatter validity
+    agents_dir = os.path.join(PLUGIN_DIR, "agents")
+    if os.path.isdir(agents_dir):
+        agent_files = sorted(f for f in os.listdir(agents_dir) if f.endswith(".md"))
+        if agent_files:
+            ok(f"agents present: {', '.join(a[:-3] for a in agent_files)}")
+        for a in agent_files:
+            t = read(os.path.join(agents_dir, a))
+            aname = frontmatter_name(t)
+            adesc = frontmatter_desc(t)
+            stem = a[:-3]
+            if aname is None:
+                blocker(f"agent {a}: frontmatter has no name")
+            elif aname != stem:
+                warn(f"agent {a}: frontmatter name '{aname}' != file stem '{stem}'")
+            if adesc is None:
+                blocker(f"agent {a}: frontmatter has no description")
+            else:
+                if len(adesc) > SKILL_DESC_MAX:
+                    blocker(f"agent {a}: description {len(adesc)} > {SKILL_DESC_MAX}")
+                else:
+                    ok(f"agent {a}: description {len(adesc)} <= {SKILL_DESC_MAX}")
+                if ANGLE_PLACEHOLDER.search(adesc):
+                    blocker(f"agent {a}: description has an <angle-bracket> placeholder")
+                else:
+                    ok(f"agent {a}: description has no angle-bracket placeholders")
+
     # 3. README present
     if os.path.isfile(os.path.join(PLUGIN_DIR, "README.md")):
         ok("README.md present (front door)")

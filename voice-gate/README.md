@@ -42,6 +42,18 @@ say there is none). See `skills/voice-gate/SKILL.md` for the full procedure and
 `skills/voice-gate/references/worked-examples.md` for one worked flawed run and one clean-pass run
 on synthetic text.
 
+## Agents
+
+The plugin ships one agent per skill (`agents/`), so each can run as an isolated subagent — the
+maker-is-not-judge separation the gate's own architecture asks for:
+
+- **`voice-gate-grader`** runs the diagnose-only gate blind and returns one scorecard.
+- **`voice-gate-profile-builder`** builds a profile from a corpus and stops at the calibration gate.
+- **`voice-gate-interviewer`** builds the profile by consent-first interview and stops at the gate.
+
+Invoke them by name ("use the voice-gate-grader on this draft"), or just use the skills directly;
+the agents are the same procedure run in a separate instance.
+
 ## Status and roadmap
 
 - **Phase 4.3: `voice-gate`, the diagnose-only runtime.** Built and shipped. (`skills/voice-gate/`)
