@@ -1,8 +1,9 @@
 # Voice Gate — share / install note
 
-A standalone Claude plugin (`voice-gate`, v0.4.0) with three skills and one agent per skill. It
-models one writer's voice and checks finished medium-form nonfiction against it. Diagnose-only:
-it tells you what is off and points at the smallest fix. It never rewrites your prose.
+A standalone Claude plugin (`voice-gate`, v0.5.0) with four skills and one agent per skill. It
+models one writer's voice and checks finished medium-form nonfiction against it. The gate is
+diagnose-only: it tells you what is off and points at the smallest fix, and never rewrites your
+prose. A separate, constrained reviser applies the gate's approved fixes when you ask.
 
 ## What this plugin does
 
@@ -20,6 +21,10 @@ it tells you what is off and points at the smallest fix. It never rewrites your 
   visual interview when the writer has no corpus or does not want to share one. Optional pasted or
   uploaded samples are quote-grounded against the answers; the same human-graded calibration gate
   proves it.
+- **`voice-gate-reviser`** (the constrained fix layer). Applies the gate's operator-approved
+  findings as the smallest in-voice change, touching only the exact quoted spans, obeying the
+  Protect list and the profile's hard guardrails, then hands the piece back to the gate to verify.
+  A span-fixer, not a prose improver: it never globally polishes and never declares the piece clean.
 
 ## How to use `voice-gate-builder`
 
@@ -51,12 +56,26 @@ it tells you what is off and points at the smallest fix. It never rewrites your 
    `skills/voice-gate/references/voice-profile-contract.md`).
 2. Run it: **"run the voice gate on this draft"** and supply the profile (or say there is none,
    and it runs the universal craft layer only and says so).
-3. Read the scorecard. Apply the fixes yourself — the gate does not.
+3. Read the scorecard. Apply the fixes yourself, or hand the approved findings to the reviser.
+
+## How to use `voice-gate-reviser`
+
+1. Run the gate first; you need its scorecard. Decide which findings to apply (default: the Blocker
+   and Should-fix rows).
+2. Run it: **"apply the gate's fixes"** and supply the piece, the scorecard, and the profile.
+3. It changes only the exact quoted spans of the approved findings, leaves your Protect list and
+   native moves untouched, and returns the changed spans as before/after pairs. It does not rewrite
+   the whole piece and it does not declare the piece clean.
+4. Re-run the gate on the revised piece to verify. The reviser fixes; the gate decides.
 
 ## What it does NOT do
 
-- It does **not** rewrite your prose. Diagnose and suggest only. (A constrained `voice-reviser`
-  is a planned later phase; it is not built.)
+- The **gate** does not rewrite your prose; it diagnoses and suggests only. The separate
+  `voice-gate-reviser` applies the gate's approved fixes, span-bounded, only when you ask, and never
+  declares the piece clean.
+- It does **not** verify facts, sourcing, or strategy. The gate checks voice and craft only; its
+  close counts the claim-shaped language and points you at a fact-checker, but it never judges
+  truth. Run a ship-safety gate (a de-slopper or a fact-checker) first; run Voice Gate second.
 - It does **not** infer a profile from the piece under test. No supplied profile means the
   universal layer only.
 - It carries **no** story-state ledger, motif ledger, multi-character modeling, or generation

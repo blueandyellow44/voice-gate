@@ -49,6 +49,10 @@ To make the personalized checks concrete, both runs use the same short synthetic
   noun "the exhaustion."
 - Rhythm: paragraph 4 is four short equal-length sentences in a row (monotone, but possibly the
   aphoristic-button tell rather than rhythm).
+- Claim-shape scan (§8, handoff only, never a finding): 0 claim-shaped statements. No numeric or
+  statistical claim, no authority appeal ("studies show"), no settled factual/strategy assertion.
+  The abstract thesis "Rest is the engine..." is a metaphor, not a world-fact claim, so it is not
+  counted here (it is graded as voice by the figure check instead).
 
 ### Grade isolated → consolidated scorecard
 
@@ -74,10 +78,20 @@ the one line doing real work. Do not touch it while fixing the surrounding flags
 
 **Close.** Checks run: all (personal essay). Narrator was in scope (first-person reflection).
 Profile status: supplied; filled Hard guardrails, Figurative signature, Native pressures, Preserve
-list. Verdict **Not ready**: one Blocker (the narrator is reconciled before the experience is over,
-which breaks the voice the profile describes). Recommended next action: hand to the reviser with
-the narrator Blocker as the approved target; the surface and figure flags are secondary.
+list. Out of scope (not graded): Voice Gate checks voice and craft only; it does not verify facts,
+sourcing, or strategy. 0 claim-shaped statements detected, but facts, sourcing, and strategy were
+not checked here; run de-slop or a fact-checker before shipping. Verdict **Not ready**: one Blocker
+(the narrator is reconciled before the experience is over, which breaks the voice the profile
+describes). Recommended next action: hand to `voice-gate-reviser` with the narrator Blocker as the
+approved target; the surface and figure flags are secondary.
 Run-log line: `2026-06-20 | rest-essay-synthetic | Not ready | blocker:1 should-fix:6 polish:3 | operator-disposition: pending`
+
+> Illustrative non-zero rendering (not from this piece): had the essay contained "Studies show
+> rested workers make 13% fewer errors," the §8 count would be 1 and the close would read: "Out of
+> scope (not graded): 1 unsourced authority/numeric claim detected ("Studies show... 13% fewer
+> errors"). Run de-slop or a fact-checker before shipping." That claim would still NOT appear as a
+> scorecard row and would NOT change the verdict; the gate detects the shape and hands off, it never
+> grades the truth.
 
 ---
 
@@ -108,6 +122,8 @@ Run-log line: `2026-06-20 | rest-essay-synthetic | Not ready | blocker:1 should-
   carries the dread; on-voice for Writer R). No simile. No abstraction noun.
 - Rhythm: varied; short fragments ("Not grief.", "useless,") after long sentences, which the
   profile's §Preserve list names as a signature move.
+- Claim-shape scan (§8, handoff only, never a finding): 0 claim-shaped statements. The piece is
+  concrete narrative; no numeric claim, no authority appeal, no settled factual/strategy assertion.
 
 ### Grade isolated → consolidated scorecard
 
@@ -127,10 +143,13 @@ Run-log line: `2026-06-20 | rest-essay-synthetic | Not ready | blocker:1 should-
 waters them now."), and the withheld naming of the feeling (vertigo, not grief). These are the
 voice. Any revision that smooths them flattens the piece.
 
-**Close.** Checks run: all (personal essay). Profile status: supplied; all slots used. Verdict
-**Good to go**: every craft check passes; the single Preserve row is a Polish-level protect note,
-not a fix, so the derived verdict stays Good to go (no Blocker, no Should-fix, and the lone Polish
-row is a do-not-touch flag rather than a defect). Recommended next action: do not revise.
+**Close.** Checks run: all (personal essay). Profile status: supplied; all slots used. Out of scope
+(not graded): Voice Gate checks voice and craft only; it does not verify facts, sourcing, or
+strategy. 0 claim-shaped statements detected, but facts, sourcing, and strategy were not checked
+here; run de-slop or a fact-checker before shipping. Verdict **Good to go**: every craft check
+passes; the single Preserve row is a Polish-level protect note, not a fix, so the derived verdict
+stays Good to go (no Blocker, no Should-fix, and the lone Polish row is a do-not-touch flag rather
+than a defect). Recommended next action: do not revise.
 Run-log line: `2026-06-20 | empty-office-synthetic | Good to go | blocker:0 should-fix:0 polish:1 | operator-disposition: pending`
 
 > Note on the derived verdict: a strict reading of the rule (any Polish → Good to go with fixes)

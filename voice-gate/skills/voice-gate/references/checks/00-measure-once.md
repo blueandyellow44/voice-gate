@@ -56,14 +56,45 @@ by quote and location: em dashes if banned, contractions if banned in this regis
 constructions, wrong greeting/sign-off form. This is the most objective measurement the gate
 makes; record it precisely so `01-surface-tells.md` and the email path can flag Blockers from it.
 
+When a dash guardrail is in play, count dashes by exact glyph so the tally cannot drift: the em
+dash (U+2014 `—`), the en dash (U+2013 `–`), and the double-hyphen (`--`) are each dash
+candidates, spaced or unspaced. Record each occurrence by quote and location and report an exact
+integer per glyph; a single hyphen inside a compound word (`well-built`) is not a dash. Flag only
+the glyphs the profile actually bans; the others are recorded for the count, not flagged.
+
 ### 7. Echo scan
 
 Repeated distinctive words or phrases (not function words) appearing three or more times, with
 locations. `05-line-craft.md` and `06-originality.md` read this to separate deliberate motif from
 unintentional echo.
 
+### 8. Claim-shape scan (scope-boundary handoff only)
+
+Voice Gate does **not** check facts, sourcing, or strategy. This section exists so the gate can say
+so honestly and point at the right tool, not so it can grade truth. Record, by quote and location,
+every instance of claim-shaped language. **Detect the shape, never judge whether it is true,
+sourced, or on-strategy.** That judgment is out of scope and belongs to a ship-safety gate
+(de-slop) or a fact-checker.
+
+- numeric / statistical claims (a `%`, a multiplier like `2.4x`, a hard count, "thousands")
+- authority appeals ("studies show", "research shows", "experts say", "data proves", "it is
+  well known that")
+- named factual or strategy assertions (a capability, positioning, or world-fact claim stated as
+  settled, e.g. "now scales to thousands of users")
+
+A hedged or colloquial generalization with no number and no authority appeal (a dry aside like
+"most people do", "it usually works out") is not claim-shaped; do not count it. Counting a writer's
+native aside here would put a preserve-listed voice move into the scope-boundary line, which is
+wrong: this scan is for facts/sourcing/strategy hand-off, not for voice.
+
+Report an exact integer total. This count never becomes a finding, a scorecard row, or a Blocker;
+it feeds only the "Out of scope (not graded)" line in the close (see `scorecard.md` §4). A piece
+with zero detected claims is normal; a piece full of them is not thereby flawed in voice.
+
 ## Output
 
-A compact record with the seven sections above. Hand it to the grading checks. Do not draw
+A compact record with the eight sections above. Hand it to the grading checks. Section 8 is the
+only one that does not feed a grading check; it feeds the close's scope-boundary line. Do not draw
 conclusions here; "three rule-of-three lists at paragraphs 2, 5, 9" is a measurement, "the piece
-leans on rule-of-three" is a judgment the surface check makes.
+leans on rule-of-three" is a judgment the surface check makes. Likewise "two authority appeals at
+paragraphs 1 and 4" is a measurement; whether they are true is not the gate's call.

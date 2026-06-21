@@ -57,8 +57,15 @@ stranger has been edited past its voice.
 - **Checks run** — which checks were run, which were skipped, and why (form scope, or no profile).
 - **Profile status** — supplied (and which slots it filled) or not supplied (so the reader knows
   the personalized checks were skipped, not passed).
-- **Recommended next action** — e.g., "hand to the reviser with the Blocker row as the approved
-  target," or "Good to go — do not revise."
+- **Out of scope (not graded)** — always present. Voice Gate checks voice and craft only; it does
+  not verify facts, sourcing, or strategy. Render the claim-shape count from
+  `checks/00-measure-once.md §8: e.g., "3 unsourced authority/numeric claims detected (\"studies
+  show...\", \"73% reduction\", \"now scales to thousands\"). Run de-slop or a fact-checker before
+  shipping." When the count is zero, still render the one-line reminder that facts, sourcing, and
+  strategy were not checked. This line is a handoff, not a finding: it carries no severity, it is
+  never a scorecard row, and it never moves the verdict.
+- **Recommended next action** — e.g., "hand to `voice-gate-reviser` with the Blocker row as the
+  approved target," or "Good to go — do not revise."
 - **Run-log line** — append one record per run (see Run log).
 
 ## Run log
@@ -85,3 +92,6 @@ signal — do not replace it with a self-computed number.
 - Diagnose only. Do not rewrite.
 - Do not render "Good to go" prematurely; run every applicable check on the full piece first.
 - A personalized check with no supplied profile is `Skipped`, never `Pass`.
+- The "Out of scope (not graded)" line never grades truth and never affects the verdict. It reports
+  the claim-shape count and hands off; it is not a finding and carries no severity. Detecting
+  claim-shaped language is not the same as judging it.

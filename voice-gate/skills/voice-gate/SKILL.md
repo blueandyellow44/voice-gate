@@ -120,8 +120,11 @@ Protect list. Every finding carries an exact quote and a named source rule, or i
 
 **E. Consolidate and render.** Dedupe and rank findings across checks. Render the one scorecard
 and the one derived verdict per `references/scorecard.md`, greens included. Render the
-consolidated Protect list. Apply `07-preserve.md` as the render-time governor: if the preserve
-list is long and the flag count is low, say the piece may not need revision.
+consolidated Protect list. Render the close's "Out of scope (not graded)" line from the claim-shape
+count in `00-measure-once.md §8`: it reports claim-shaped language and hands off to a ship-safety
+gate or fact-checker. It is not a finding, carries no severity, and never moves the verdict. Apply
+`07-preserve.md` as the render-time governor: if the preserve list is long and the flag count is
+low, say the piece may not need revision.
 
 **F. Log.** Append one run-log line (see `references/scorecard.md` "Run log"). Do not compute or
 assert a confidence number; the run log measured against the writer's disposition is the only
@@ -152,6 +155,11 @@ confidence signal.
 - **Universal where universal, supplied where personal.** Do not bake one writer's guardrails
   (a punctuation ban, a figurative signature, a list of native pressures) into a universal check.
   Those are profile slots.
+- **Never grade facts, sourcing, or strategy.** The claim-shape scan detects and counts
+  claim-shaped language so the close can hand off honestly; it never judges whether a claim is
+  true, sourced, or on-strategy, and it never produces a finding or moves the verdict. World-truth
+  and strategy belong to a ship-safety gate (de-slop) or a fact-checker. Run that first; run this
+  for voice fidelity.
 
 ## Worked example
 
@@ -161,9 +169,11 @@ clean-pass run. Read it for a calibrated model of both outcomes before grading y
 
 ## Phase note
 
-This is the diagnose-only runtime (Phase 4.3). Its sibling `voice-gate-builder` (Phase 4.4, shipped
-in this same plugin at `skills/voice-gate-builder/`) generates the supplied profile this runtime
-reads, from a writer's own corpus, and proves it through a human-graded calibration gate. If a
-writer has no profile yet, route them to the builder first. `voice-reviser` (constrained,
-flag-bounded revision in voice, governed by preserve-over-polish) ships after the gate proves out.
-The gate never assumes the reviser exists, and it never generates a profile itself.
+This is the diagnose-only runtime. Its sibling `voice-gate-builder` (shipped in this same plugin at
+`skills/voice-gate-builder/`) generates the supplied profile this runtime reads, from a writer's
+own corpus, and proves it through a human-graded calibration gate. If a writer has no profile yet,
+route them to the builder first. `voice-gate-reviser` (shipped in this same plugin at
+`skills/voice-gate-reviser/`) is the constrained, flag-bounded reviser, governed by
+preserve-over-polish: hand it this scorecard's operator-approved findings as targets, then re-run
+this gate to verify. The gate stays diagnose-only and never rewrites the prose itself; it never
+generates a profile itself.

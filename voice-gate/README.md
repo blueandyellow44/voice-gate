@@ -35,6 +35,17 @@ It detects and suggests. It never edits. A clean pass is a normal, valid result.
 Measure once (one deterministic sheet), grade isolated (each check proposes findings blind to the
 others, no check self-certifies), render consolidated (one gate, one scorecard, one verdict).
 
+## Where this fits
+
+Voice Gate checks voice and craft. It does **not** verify facts, sourcing, or strategy: it never
+asserts whether a claim is true, sourced, or on-strategy. Run a ship-safety gate (a de-slopper or a
+fact-checker) **first** for that, then run Voice Gate **second** for voice fidelity. Voice Gate is
+the finer net: it is the one that knows the difference between a writer's tic and a defect, and it
+protects a writer's signature (native em dashes, dry asides, rule-breaking moves) that a universal
+slop pass would flatten. To keep the boundary honest, every scorecard's close carries an "Out of
+scope (not graded)" line that counts the claim-shaped language in the piece and points you at the
+right tool; that line never affects the verdict.
+
 ## Use it
 
 Install as a plugin, then: "run the voice gate on this draft" (and supply the writer's profile, or
@@ -50,6 +61,8 @@ maker-is-not-judge separation the gate's own architecture asks for:
 - **`voice-gate-grader`** runs the diagnose-only gate blind and returns one scorecard.
 - **`voice-gate-profile-builder`** builds a profile from a corpus and stops at the calibration gate.
 - **`voice-gate-interviewer`** builds the profile by consent-first interview and stops at the gate.
+- **`voice-gate-reviser`** applies the gate's approved findings as the smallest in-voice change and
+  hands back to the gate; it never self-certifies.
 
 Invoke them by name ("use the voice-gate-grader on this draft"), or just use the skills directly;
 the agents are the same procedure run in a separate instance.
@@ -69,9 +82,12 @@ the agents are the same procedure run in a separate instance.
   answers are marked self-reported and the calibration gate tests them first. Renders as an in-chat
   visualization on Cowork, chat, and desktop, or writes an interactive offline HTML file in a
   terminal. Same calibration gate, never self-graded.
-- **Later: `voice-reviser`.** Constrained, flag-bounded revision in voice, governed by
-  preserve-over-polish, handed off from the gate. The gate never edits; the reviser does, within
-  the gate's approved flags. Not built yet.
+- **`voice-gate-reviser`, the constrained fix layer.** Built and shipped.
+  (`skills/voice-gate-reviser/`) Applies the gate's operator-approved findings as the smallest
+  in-voice change, touching only the exact quoted spans, obeying the Protect list and the supplied
+  profile's hard guardrails, then hands the piece back to the gate to verify. A span-fixer, not a
+  prose improver: it never globally polishes and never self-certifies. The gate never edits; the
+  reviser does, within the gate's approved flags.
 
 The gate is the distributable entry point; the builder generates its profile from a writer's own
 corpus, and the interview generates the same profile when there is no corpus to give. To build a
