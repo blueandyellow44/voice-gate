@@ -1,0 +1,15 @@
+# Copy this file to private-terms.txt and replace the placeholders with your
+# own private terms. One Python regex per line. Blank lines and # comments
+# are ignored.
+#
+# private-terms.txt is gitignored on purpose. A committed denylist publishes
+# the exact names it exists to protect. Without that file the packager refuses
+# to report a clean leak scan rather than passing silently.
+#
+# Typical targets: a recipient's name, family and friends, private file names,
+# private vault or filesystem paths, private sibling projects.
+
+# \bRecipientFirstName\b
+# my-private-notes-file
+# my-private-vault-name
+# \bSomeClientSurname\b
