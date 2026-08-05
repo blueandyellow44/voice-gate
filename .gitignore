@@ -10,3 +10,6 @@ __pycache__/
 
 # Session scaffolding (local pickup notes, not part of the plugin)
 /PICKUP.md
+
+# Private leak-scan denylist: local only, never committed.
+automation/private-terms.txt

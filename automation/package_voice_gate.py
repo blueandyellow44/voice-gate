@@ -17,6 +17,7 @@ import os
 import re
 import sys
 import zipfile
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PLUGIN_DIR = os.path.join(ROOT, "voice-gate")
@@ -30,16 +31,33 @@ SKILL_DESC_MAX = 1024
 REQUIRED_SKILL_FILES = ["SKILL.md"]
 
 # Private-leak scan: terms that must NOT appear in the distributable plugin.
-# "Max Sheahan" is allowed (he is the plugin author). The targets are real
-# private references: the recipient, family/friends, the private dossier FILE,
-# private vault paths, and the private personal pipeline. The bare craft noun
-# "dossier" is intentionally NOT a target — the skills legitimately use it to
-# say "the gate never needs a dossier / do not build one", which is reassuring,
-# not leaking.
-LEAK_PATTERNS = [
-    # Private terms are loaded from an untracked file; see
-    # automation/private-terms.example.txt.
-]
+# The author's own name is allowed; the targets are real private references
+# such as recipients, people, private file names, and private vault paths.
+# The bare craft noun "dossier" is intentionally NOT a target — the skills
+# legitimately use it to say "the gate never needs a dossier / do not build
+# one", which is reassuring, not leaking.
+#
+# The patterns themselves are private, because a committed denylist publishes
+# exactly the names it exists to protect. They live in an untracked file next
+# to this script, one Python regex per line, blank lines and # comments
+# ignored. See private-terms.example.txt; copy it to private-terms.txt and
+# fill in your own. Without that file the structural checks still run and the
+# leak scan reports as unconfigured rather than silently passing.
+PRIVATE_TERMS_FILE = Path(__file__).with_name("private-terms.txt")
+
+
+def _load_leak_patterns():
+    if not PRIVATE_TERMS_FILE.exists():
+        return None
+    out = []
+    for line in PRIVATE_TERMS_FILE.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            out.append(line)
+    return out
+
+
+LEAK_PATTERNS = _load_leak_patterns()
 # Lines/files where an incidental match is legitimate (author credit, etc.).
 LEAK_ALLOW_SUBSTR = [
     "Max Sheahan",         # author name
@@ -192,6 +210,16 @@ def preflight():
 
 def leak_scan():
     hits = []
+    if LEAK_PATTERNS is None:
+        blocker(
+            f"private-leak scan UNCONFIGURED: {PRIVATE_TERMS_FILE.name} not found. "
+            f"Copy {PRIVATE_TERMS_FILE.with_name('private-terms.example.txt').name} "
+            "to it and add your own terms. Refusing to report a clean scan that never ran."
+        )
+        return hits
+    if not LEAK_PATTERNS:
+        blocker(f"private-leak scan UNCONFIGURED: {PRIVATE_TERMS_FILE.name} is empty.")
+        return hits
     pats = [re.compile(p) for p in LEAK_PATTERNS]
     for dirpath, dirnames, filenames in os.walk(PLUGIN_DIR):
         if ".git" in dirpath:
